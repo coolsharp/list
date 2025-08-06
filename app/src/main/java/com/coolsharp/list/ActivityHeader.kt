@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -33,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import java.nio.file.WatchEvent
 
 @Composable
 fun ActivityHeader(modifier: Modifier = Modifier) {
@@ -95,12 +97,12 @@ fun FilterButton(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun MakeButton(title: String, modifier: Modifier = Modifier) {
+fun MakeButton(title: String, backgroundColor: Color = Color.LightGray, modifier: Modifier = Modifier) {
     Button(
         onClick = { /* 버튼 클릭 동작 */ },
         shape = RoundedCornerShape(8.dp), // 모서리 둥글기 정도 설정
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color.LightGray, // 버튼 배경색
+            containerColor = backgroundColor, // 버튼 배경색
             contentColor = Color.White // 텍스트/아이콘 색상
         ),
         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
@@ -124,5 +126,16 @@ fun MakeButton(title: String, modifier: Modifier = Modifier) {
                 modifier = Modifier.size(24.dp)
             )
         }
+    }
+}
+
+@Composable
+fun Sort(modifier: Modifier = Modifier) {
+    Row(modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween) {
+        Text(modifier = Modifier.padding(10.dp),
+            text = "13'134 products")
+        MakeButton("Sort by Relevance", Color.White)
     }
 }
