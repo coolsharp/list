@@ -9,6 +9,7 @@ interface ApiService {
     @GET("/products")
     suspend fun getProducts(
         @Query("limit") limit: Int = 10,
-        @Query("skip") skip: Int = 0
+        @Query("skip") skip: Int = 0,
+        @Query("delay") delay: Int = 0
     ): Products
 }
