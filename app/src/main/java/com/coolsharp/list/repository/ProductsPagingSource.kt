@@ -3,10 +3,10 @@ package com.coolsharp.list.repository
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.coolsharp.list.data.Product
-import com.coolsharp.list.network.ApiService
+import com.coolsharp.list.network.ProductsApiService
 
 class ProductsPagingSource(
-    private val productApiService: ApiService,
+    private val productProductsApiService: ProductsApiService,
     private val pageSize: Int = 20
 ) : PagingSource<Int, Product>() {
 
@@ -20,7 +20,7 @@ class ProductsPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Product> {
         return try {
             val page = params.key ?: 0
-            val response = productApiService.getProducts(
+            val response = productProductsApiService.getProducts(
                 limit = pageSize,
                 skip = page * pageSize
             )

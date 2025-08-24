@@ -28,12 +28,12 @@ object RetrofitInstance {
 
     private val contentType = "application/json".toMediaType()
 
-    val apiService: ApiService by lazy {
+    val productsApiService: ProductsApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
-            .create(ApiService::class.java)
+            .create(ProductsApiService::class.java)
     }
 }
