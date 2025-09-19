@@ -26,7 +26,7 @@ class ProductsPagingSource(
 
             val page = params.key ?: 0
 
-            if (!category.isEmpty()) {
+            if (category.isNotEmpty()) {
                 Log.d("coolsharp", category.lowercase().trim())
                 response = RetrofitInstance.productsApiService.getProducts(
                     category = category,
