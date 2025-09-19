@@ -7,9 +7,9 @@ import com.coolsharp.list.network.RetrofitInstance
 class ProductRepository {
     private val productApiService = RetrofitInstance.productsApiService
 
-    fun getProducts(pageSize: Int = 20) = Pager(
+    fun getProducts(pageSize: Int = 20, category: String) = Pager(
         pagingSourceFactory = {
-            ProductsPagingSource(productApiService, pageSize)
+            ProductsPagingSource(pageSize, category)
         },
         config = PagingConfig(
             pageSize = pageSize,

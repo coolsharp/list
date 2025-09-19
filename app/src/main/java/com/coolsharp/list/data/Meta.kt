@@ -1,6 +1,5 @@
 package com.coolsharp.list.data
 
-
 import android.annotation.SuppressLint
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

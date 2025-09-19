@@ -1,6 +1,7 @@
 package com.coolsharp.list.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import io.nerdythings.okhttp.profiler.OkHttpProfilerInterceptor
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -15,6 +16,7 @@ object RetrofitInstance {
         .addInterceptor(HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         })
+        .addInterceptor(OkHttpProfilerInterceptor())
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
@@ -35,5 +37,23 @@ object RetrofitInstance {
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
             .create(ProductsApiService::class.java)
+    }
+
+    val productsApiAllService: ProductsApiAllService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .build()
+            .create(ProductsApiAllService::class.java)
+    }
+
+    val categoryApiService: CategoryApiService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .build()
+            .create(CategoryApiService::class.java)
     }
 }

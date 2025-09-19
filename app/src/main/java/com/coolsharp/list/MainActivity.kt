@@ -37,8 +37,9 @@ fun MainScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier
         .background(Color.White)) {
         ActivityHeader()
-        FilterButton()
-        Sort()
-        ProductScreen()
+//        FilterButton()
+//        Sort()
+//        ProductScreen()
+        CategoryScreen()
     }
 }

@@ -1,5 +1,6 @@
 package com.coolsharp.list
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -27,6 +28,7 @@ import com.coolsharp.list.viewmodel.ProductViewModel
 @Composable
 fun ProductScreen(viewModel: ProductViewModel = viewModel()) {
     val products = viewModel.products.collectAsLazyPagingItems()
+    Log.d("coolsharp", "call")
 
     Box(modifier = Modifier.fillMaxSize()) {
         LazyVerticalGrid(
@@ -85,7 +87,8 @@ fun ProductGridItem(product: Product) {
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(0.8f),
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(
             modifier = Modifier.padding(8.dp)

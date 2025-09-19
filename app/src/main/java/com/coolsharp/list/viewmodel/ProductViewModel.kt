@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ProductViewModel : ViewModel() {
+class ProductViewModel(private val category: String) : ViewModel() {
     private val repository = ProductRepository()
 
-    val products = repository.getProducts().cachedIn(viewModelScope)
+    val products = repository.getProducts(category = category).cachedIn(viewModelScope)
 }
