@@ -37,12 +37,14 @@ import androidx.compose.ui.unit.sp
 import java.nio.file.WatchEvent
 
 @Composable
-fun ActivityHeader(modifier: Modifier = Modifier) {
+fun ActivityHeader(modifier: Modifier = Modifier, activity: MainActivity) {
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
-            onClick = { /* 클릭 동작 */ }, modifier = Modifier.size(48.dp) // 버튼 크기 조정
+            onClick = {
+                activity.onBackPressedDispatcher.onBackPressed()
+            }, modifier = Modifier.size(48.dp) // 버튼 크기 조정
         ) {
             Icon(
                 imageVector = Icons.Filled.KeyboardArrowLeft, contentDescription = "닫기버튼"
